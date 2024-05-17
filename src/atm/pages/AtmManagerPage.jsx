@@ -1,4 +1,3 @@
-import React from "react";
 import { AtmList } from "..";
 import { Search } from "../../home";
 import { useState } from "react";
@@ -15,8 +14,8 @@ export const AtmManagerPage = () => {
          <div className="container mt-5">
             <h1>Atm Manager</h1>
             <hr />
-            <Search onNewSearchParam={(value) => newSearchParam(value)} />
-            <AtmList location={searchParam} />
+            <Search onNewSearchParam={(value) => newSearchParam(value)}  placeholderText="Name"/>
+            <AtmList name={searchParam} />
          </div>
       </>
    );

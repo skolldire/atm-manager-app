@@ -1,11 +1,15 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../auth";
+import { useContext } from "react";
 
 export const Navbar = () => {
+   const { user, logout } = useContext(AuthContext);
    const navigate = useNavigate();
 
    const onLogout = () => {
+      logout();
       navigate("/login", {
-         replace: false,
+         replace: true,
       });
    };
 
@@ -13,9 +17,7 @@ export const Navbar = () => {
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
          <div className="navbar-collapse">
             <ul className="navbar-nav ml-auto">
-               <span className="nav-item nav-link active">
-                  Admin
-               </span>
+               <span className="nav-item nav-link active">{user.name}</span>
 
                <button className="nav-item nav-link btn" onClick={onLogout}>
                   Logout
@@ -30,17 +32,8 @@ export const Navbar = () => {
                   }
                   to="/"
                >
-                  Home
-               </NavLink>
-               <NavLink
-                  className={({ isActive }) =>
-                     `nav-item nav-link  ${isActive ? "active" : ""}`
-                  }
-                  to="/atms"
-               >
                   ATM Manager
                </NavLink>
-
                <NavLink
                   className={({ isActive }) =>
                      `nav-item nav-link  ${isActive ? "active" : ""}`
@@ -56,14 +49,6 @@ export const Navbar = () => {
                   to="/access"
                >
                   Access Manager
-               </NavLink>
-               <NavLink
-                  className={({ isActive }) =>
-                     `nav-item nav-link  ${isActive ? "active" : ""}`
-                  }
-                  to="/reports"
-               >
-                  Report Center
                </NavLink>
             </div>
          </div>

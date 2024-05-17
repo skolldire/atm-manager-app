@@ -1,22 +1,26 @@
+import { useState } from "react";
+import { AuthContext } from "..";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoginForm } from "..";
 
 export const LoginPage = () => {
+   const { login } = useContext(AuthContext);
    const navigate = useNavigate();
 
-   const onLogin = () => {
-      navigate("/", {
+   const onLogin = (userParam, passParam) => {
+      const lastPath = localStorage.getItem("lastPath") || "/";
+
+      login(userParam, passParam);
+
+      navigate(lastPath, {
          replace: true,
       });
    };
 
    return (
-      <div className="container mt-3">
-         <h1>Login</h1>
-         <hr />
-
-         <button className="btn btn-primary" onClick={onLogin}>
-            Login
-         </button>
-      </div>
+      <>
+         <LoginForm onNewLogin={onLogin} />
+      </>
    );
 };

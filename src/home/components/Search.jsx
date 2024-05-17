@@ -1,9 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useState } from "react";
 
-export const Search = ({ onNewSearchParam }) => {
+export const Search = ({ onNewSearchParam, placeholderText }) => {
    const [inputValue, setInputValue] = useState("");
+
+   const plastring ="Search by " + placeholderText + "...";
 
    const onChange = ({ target }) => {
       setInputValue(target.value);
@@ -18,13 +19,13 @@ export const Search = ({ onNewSearchParam }) => {
 
    return (
       <>
-         <div className="container-fluid row mt-5 justify-content-end">
+         <div className="row mt-5 justify-content-end">
             <form className="d-flex" id="search" onSubmit={onSubmit}>
                <input
                id="searchInput"
                   className="form-control me-2"
                   type="search"
-                  placeholder="Search"
+                  placeholder={plastring}
                   aria-label="Search"
                   value={inputValue}
                   onChange={onChange}
@@ -38,6 +39,3 @@ export const Search = ({ onNewSearchParam }) => {
    );
 };
 
-Search.propTypes = {
-   onNewSearchParam: PropTypes.func.isRequired,
-};
