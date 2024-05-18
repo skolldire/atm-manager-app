@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import { Navbar } from "..";
-import { AtmCardPage, AtmManagerPage } from "../../atm";
-import { BalanceCenterPage } from "../../balance";
-import { AccessManagerPage } from "../../access";
+import { Navbar } from "../components/Navbar";
+import { AtmCardPage, AtmManagerPage } from "../atm";
+import { BalanceCenterPage } from "../balance";
+import { AccessManagerPage } from "../access";
 
-export const HomeRoutes = () => {
+export const AtmRoutes = () => {
    return (
       <>
          <Navbar />

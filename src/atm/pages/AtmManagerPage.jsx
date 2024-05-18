@@ -1,21 +1,16 @@
 import { AtmList } from "..";
-import { Search } from "../../home";
-import { useState } from "react";
+import { Search } from "../../components/SearchAuto";
+import { useSearch } from "../../hooks/useSearch";
 
 export const AtmManagerPage = () => {
-   const [searchParam, setSearchParam] = useState("");
-
-   const newSearchParam = (newValue) => {
-      if (newValue.trim().length <= 0) return;
-      setSearchParam(newValue);
-   };
+   const newSearchParam = useSearch();
    return (
       <>
          <div className="container mt-5">
             <h1>Atm Manager</h1>
             <hr />
-            <Search onNewSearchParam={(value) => newSearchParam(value)}  placeholderText="Name"/>
-            <AtmList name={searchParam} />
+            <Search onNewSearchParam={newSearchParam}  placeholderText="Name"/>
+            <AtmList name={newSearchParam.search} />
          </div>
       </>
    );

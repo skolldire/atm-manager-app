@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { LoginPage } from "../auth";
-import { HomeRoutes } from "../home";
+import { AtmRoutes } from "./AtmRoutes";
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
 
@@ -20,7 +20,7 @@ export const AppRouter = () => {
             
             <Route path="/*" element={
               <PrivateRoute>
-                <HomeRoutes />
+                <AtmRoutes />
               </PrivateRoute>
             } />
          </Routes>
