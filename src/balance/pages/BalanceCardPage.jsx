@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { getBalanceById } from "../helpers/getBalanceById";
 
 export const BalanceCardPage = ({ id }) => {
-   if (!id) return null;
+   if (!id) return;
 
    const balance = useMemo(() => getBalanceById(id), [id]);
    if (!balance) {
